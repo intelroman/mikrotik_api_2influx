@@ -1,0 +1,62 @@
+[
+    {
+        "item": "interfaces",
+        "url": "rest/interface",
+        "to_flux": true
+    },
+    {
+        "item": "firewall_filter",
+        "url": "rest/ip/firewall/filter",
+        "to_flux": true
+    },
+    {
+        "item": "firewall_nat",
+        "url": "rest/ip/firewall/nat",
+        "to_flux": true
+    },
+    {
+        "item": "firewall_mangle",
+        "url": "rest/ip/firewall/mangle",
+        "to_flux": true
+    },
+    {
+        "item": "firewall_raw",
+        "url": "rest/ip/firewall/raw",
+        "to_flux": true
+    },
+    {
+        "item": "system_resources",
+        "url": "rest/system/resource",
+        "to_flux": true
+    },
+    {
+        "item": "system_cpu",
+        "url": "rest/system/resource/cpu",
+        "to_flux": true
+    },
+    {
+        "item": "system_irq",
+        "url": "rest/system/resource/irq",
+        "to_flux": true
+    },
+    {
+        "item": "system_health",
+        "url": "rest/system/health",
+        "to_flux": true
+    },
+    {
+        "item": "ipsec_statistics",
+        "url": "rest/ip/ipsec/statistics",
+        "to_flux": true
+    },
+    {
+        "item": "simple_queue",
+        "url": "rest/queue/simple",
+        "to_flux": true
+    },
+    {
+        "item": "tree_queue",
+        "url": "rest/queue/tree",
+        "to_flux": true
+    }
+]
