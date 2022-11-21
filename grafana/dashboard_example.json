@@ -136,7 +136,7 @@
           },
           "custom": {
             "axisCenteredZero": false,
-            "axisColorMode": "text",
+            "axisColorMode": "series",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -148,7 +148,7 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -164,11 +164,12 @@
               "mode": "line+area"
             }
           },
+          "decimals": 2,
           "displayName": "${__field.labels.router} ${__field.labels.cpu} ${__field.name}",
           "mappings": [],
           "max": 100,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -204,7 +205,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -214,7 +215,7 @@
             "type": "influxdb",
             "uid": "b1Uh8kS4k"
           },
-          "query": "from(bucket: \"mikrotik\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"type\"] == \"cpu\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"load\")\r\n  |> aggregateWindow(every: 1s, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"mikrotik\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r.type == \"system_cpu\")\r\n  |> filter(fn: (r) => r._field == \"load\")\r\n  |> aggregateWindow(every: 1s, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -233,7 +234,7 @@
           },
           "custom": {
             "axisCenteredZero": false,
-            "axisColorMode": "text",
+            "axisColorMode": "series",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -266,7 +267,7 @@
           },
           "displayName": "${__field.labels.router} ${__field.labels.name} temp:",
           "mappings": [],
-          "max": 100,
+          "max": 85,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1339,7 +1340,7 @@
             "type": "influxdb",
             "uid": "b1Uh8kS4k"
           },
-          "query": "from(bucket: \"mikrotik\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"type\"] == \"RPM\")\r\n  |> aggregateWindow(every: 1s, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"mikrotik\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"type\"] == \"system_health\" and r[\"name\"] =~ /^fan.*/)\r\n  |> aggregateWindow(every: 1s, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -1537,13 +1538,13 @@
     "list": []
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Mikrotik Dashboard",
   "uid": "Km6BVnH4k",
-  "version": 21,
+  "version": 26,
   "weekStart": ""
 }

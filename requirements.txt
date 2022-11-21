@@ -1,4 +1,4 @@
-aiocsv==1.2.2
+aiocsv==1.2.3
 aiohttp==3.8.3
 aiosignal==1.2.0
 async-timeout==4.0.2
